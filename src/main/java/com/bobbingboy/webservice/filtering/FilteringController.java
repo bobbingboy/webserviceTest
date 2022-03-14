@@ -14,7 +14,7 @@ import java.util.List;
 public class FilteringController {
 
     @GetMapping("/filtering")
-    public MappingJacksonValue retreiveSomeBean() {
+    public MappingJacksonValue retrieveSomeBean() {
         SomeBean someBean =  new SomeBean("value1", "v2", "v3");
 
         SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
@@ -29,7 +29,7 @@ public class FilteringController {
     }
 
     @GetMapping("/filtering-list")
-    public MappingJacksonValue retreiveListOfSomeBean() {
+    public MappingJacksonValue retrieveListOfSomeBean() {
       List<SomeBean> list = Arrays.asList(new SomeBean("value1", "v2", "v3"),
                 new SomeBean("v11", "v12", "v13"));
         SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter

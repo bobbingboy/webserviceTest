@@ -1,11 +1,9 @@
 package com.bobbingboy.webservice.user;
 
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
@@ -13,13 +11,16 @@ import javax.validation.constraints.Size;
 public class User {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private Integer id;
 
 	@Size(min=2)
 	private String name;
 	@Past
 	private Date birthday;
+
+	@OneToMany(mappedBy = "user")
+	private List<Post> posts;
 	
 	
 
@@ -56,6 +57,14 @@ public class User {
 
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 
 	@Override
